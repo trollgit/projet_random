@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une Idée</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le CSS -->
+</head>
+<body>
+    <header>
+        <h1>Ajouter une Idée</h1>
+    </header>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
+        <a href="ideas.html"><i class="fas fa-list"></i> Vos Idées</a>
+    </nav>
+    <main>
+        <h2>Partagez vos idées de rendez-vous</h2>
+        <p>Ajoutez une nouvelle idée pour vos prochaines sorties en amoureux.</p>
+
+        <!-- Formulaire -->
+        <form id="add-idea-form">
+            <div class="form-group">
+                <label for="idea-title">Titre de l'idée :</label>
+                <input type="text" id="idea-title" name="idea-title" placeholder="Exemple : Dîner romantique" required>
+            </div>
+            <div class="form-group">
+                <label for="idea-description">Description :</label>
+                <textarea id="idea-description" name="idea-description" placeholder="Décrivez votre idée..." rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="cta-button"><i class="fas fa-paper-plane"></i> Soumettre l'idée</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024</p> <!-- Sans la mention "Créé avec ❤️" -->
+    </footer>
+
+    <script>
+        // Gérer la soumission du formulaire
+        document.getElementById('add-idea-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement de la page
+            const title = document.getElementById('idea-title').value;
+            const description = document.getElementById('idea-description').value;
+
+            // Simule l'ajout d'idée (à remplacer par une logique serveur ou stockage)
+            alert(`Votre idée a été ajoutée :\n\nTitre : ${title}\nDescription : ${description}`);
+            
+            // Réinitialise le formulaire
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
 

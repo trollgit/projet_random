@@ -3,15 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tirage au sort - Idées de dates</title>
+    <title>Nos Idées de Dates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #f4b41a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+        nav a:hover {
+            color: #f4b41a;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        main h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #f4b41a;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 5px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #e99e10;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Nos idées de dates</h1>
-    <ul id="ideas-list"></ul>
-    <input type="text" id="idea-input" placeholder="Ajouter une idée">
-    <button id="add-idea-btn">Ajouter</button>
-    <button id="draw-idea-btn">Tirer au sort</button>
-    <h2 id="random-idea"></h2>
-    <script src="script.js"></script>
+    <header>
+        <h1>Nos Idées de Dates</h1>
+    </header>
+    <nav>
+        <a href="ideas.html">Vos Idées</a>
+        <a href="random.html">Tirage au Sort</a>
+        <a href="about.html">À Propos</a>
+    </nav>
+    <main>
+        <h2>Bienvenue sur notre espace partagé !</h2>
+        <p>Ajoutez vos idées de rendez-vous, tirez au sort et trouvez la meilleure inspiration pour vos prochaines sorties en amoureux.</p>
+        <a class="cta-button" href="ideas.html">Voir les Idées</a>
+        <a class="cta-button" href="random.html">Lancer un Tirage</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 - Créé avec ❤️ pour un projet personnel</p>
+    </footer>
 </body>
 </html>

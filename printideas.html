@@ -6,11 +6,11 @@
     <title>Vos Idées</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleprintideas.css">
-    
-        // Importation des modules Firebase v9
+
+    <!-- Importation des modules Firebase v9 -->
+    <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
         import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
-        <script src="app.js" defer>
 
         // Configuration Firebase
         const firebaseConfig = {
@@ -66,7 +66,6 @@
                 console.error("Erreur lors de la suppression de l'idée :", error);
             });
         }
-        <script type="module">
     </script>
 </head>
 <body id="printideas-page">

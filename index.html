@@ -25,6 +25,11 @@
         <a class="cta-button" href="random.html"><i class="fas fa-dice"></i> Lancer un Tirage</a>
 
     </main>
-    
+    if (navigator.onLine) {
+        console.log("Connexion internet : OK");
+    } else {
+        console.log("Pas de connexion internet !");
+    }
+
 </body>
 </html>

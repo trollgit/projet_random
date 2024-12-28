@@ -1,14 +1,13 @@
 // Configuration Firebase
-// Configuration Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
-            authDomain: "randomidee-e6cdc.firebaseapp.com",
-            databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "randomidee-e6cdc",
-            storageBucket: "randomidee-e6cdc.appspot.com",
-            messagingSenderId: "920175592676",
-            appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
-        };
+const firebaseConfig = {
+    apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
+    authDomain: "randomidee-e6cdc.firebaseapp.com",
+    databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "randomidee-e6cdc",
+    storageBucket: "randomidee-e6cdc.appspot.com",
+    messagingSenderId: "920175592676",
+    appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
+};
 
 // Initialisation Firebase
 firebase.initializeApp(firebaseConfig);
@@ -22,6 +21,17 @@ function addIdea(title, description) {
     });
 }
 
+// Supprimer une idée
+function deleteIdea(ideaId) {
+    db.ref('ideas/' + ideaId).remove()
+        .then(() => {
+            console.log('Idée supprimée avec succès');
+        })
+        .catch((error) => {
+            console.error('Erreur lors de la suppression de l\'idée:', error);
+        });
+}
+
 // Afficher les idées (pour `printideas.html`)
 function displayIdeas() {
     const ideaList = document.getElementById('idea-list');
@@ -32,8 +42,14 @@ function displayIdeas() {
 
         snapshot.forEach((childSnapshot) => {
             const idea = childSnapshot.val();
+            const ideaId = childSnapshot.key; // Récupère l'ID de l'idée
             const listItem = document.createElement('li');
-            listItem.textContent = idea.title; // Affiche uniquement le titre
+            listItem.classList.add('idea-item');
+            listItem.innerHTML = `
+                <strong>${idea.title}</strong>
+                <p>${idea.description}</p>
+                <button onclick="deleteIdea('${ideaId}')">Supprimer</button>
+            `;
             ideaList.appendChild(listItem);
             count++;
         });

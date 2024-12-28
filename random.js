@@ -1,59 +1,43 @@
-// Importation des modules Firebase v9
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+function randomIdea() {
+    const randomButton = document.getElementById('draw-button');
+    const randomIdeaContainer = document.getElementById('random-idea');
+    const totalIdeas = document.getElementById('total-ideas');
+    const ideasRef = db.ref('ideas/');
 
-// Configuration Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
-    authDomain: "randomidee-e6cdc.firebaseapp.com",
-    databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "randomidee-e6cdc",
-    storageBucket: "randomidee-e6cdc.appspot.com",
-    messagingSenderId: "920175592676",
-    appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
-};
+    let ideasArray = [];
 
-// Initialisation Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+    randomButton.addEventListener('click', () => {
+        ideasRef.once('value').then((snapshot) => {
+            const ideas = snapshot.val();
+            ideasArray = [];
 
-// Sélectionner les éléments
-const totalIdeas = document.getElementById('total-ideas');
-const ideasList = document.getElementById('ideas-list');
-const randomButton = document.getElementById('draw-button');
-const randomIdeaContainer = document.getElementById('random-idea');
+            if (ideas) {
+                for (const key in ideas) {
+                    const idea = ideas[key];
+                    ideasArray.push({ id: key, ...idea });
+                }
+            }
 
-// Charger les idées depuis Firebase
-const ideasRef = ref(db, 'ideas/');
-let ideasArray = [];
+            // Vérifiez si l'élément existe avant de manipuler innerHTML
+            if (randomIdeaContainer) {
+                if (ideasArray.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * ideasArray.length);
+                    const randomIdea = ideasArray[randomIndex];
+                    randomIdeaContainer.innerHTML = `
+                        <strong>${randomIdea.title}</strong>
+                        <p>${randomIdea.description}</p>
+                    `;
+                } else {
+                    randomIdeaContainer.innerHTML = `<p>Aucune idée disponible.</p>`;
+                }
+            } else {
+                console.error("L'élément random-idea n'a pas été trouvé.");
+            }
 
-onValue(ideasRef, (snapshot) => {
-    const ideas = snapshot.val();
-    ideasArray = [];
-    ideasList.innerHTML = ''; // Vider la liste
-
-    if (ideas) {
-        for (const key in ideas) {
-            const idea = ideas[key];
-            ideasArray.push({ id: key, ...idea });
-        }
-    }
-
-    totalIdeas.textContent = ideasArray.length; // Mettre à jour le compteur
-}, (error) => {
-    console.error("Erreur lors de la récupération des données :", error);
-});
-
-// Fonction pour tirer une idée au hasard
-randomButton.addEventListener('click', () => {
-    if (ideasArray.length > 0) {
-        const randomIndex = Math.floor(Math.random() * ideasArray.length);
-        const randomIdea = ideasArray[randomIndex];
-        randomIdeaContainer.innerHTML = `
-            <strong>${randomIdea.title}</strong>
-            <p>${randomIdea.description}</p>
-        `;
-    } else {
-        randomIdeaContainer.innerHTML = `<p>Aucune idée disponible.</p>`;
-    }
-});
+            // Met à jour le nombre total d'idées
+            if (totalIdeas) {
+                totalIdeas.textContent = ideasArray.length;
+            }
+        });
+    });
+}

@@ -57,14 +57,13 @@ main {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s;
+    position: relative;
+    transition: background-color 0.3s ease;
 }
 
+/* Effet au survol */
 .idea-item:hover {
-    background-color: #f0f8f0; /* Change couleur au survol */
+    background-color: #f0f0f0;
 }
 
 .idea-item strong {
@@ -79,16 +78,21 @@ main {
 
 /* Bouton de suppression */
 .delete-button {
-    background-color: #ff4d4d;
-    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4c4c;
     color: white;
-    padding: 10px;
-    border-radius: 5px;
+    border: none;
+    padding: 8px 12px;
     cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
-    background-color: #ff1a1a;
+    background-color: #ff0000;
 }
 
 /* Pied de page */

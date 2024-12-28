@@ -57,6 +57,14 @@ main {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.idea-item:hover {
+    background-color: #f0f8f0; /* Change couleur au survol */
 }
 
 .idea-item strong {
@@ -67,6 +75,20 @@ main {
 .idea-item p {
     font-size: 1rem;
     color: #333;
+}
+
+/* Bouton de suppression */
+.delete-button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a;
 }
 
 /* Pied de page */

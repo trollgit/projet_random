@@ -1,13 +1,14 @@
 // Configuration Firebase
-const firebaseConfig = {
-    apiKey: "TA_CLÉ_API",
-    authDomain: "TON_PROJET.firebaseapp.com",
-    databaseURL: "https://TON_PROJET.firebaseio.com",
-    projectId: "TON_PROJET",
-    storageBucket: "TON_PROJET.appspot.com",
-    messagingSenderId: "TON_MESSAGING_ID",
-    appId: "TON_APP_ID"
-};
+// Configuration Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
+            authDomain: "randomidee-e6cdc.firebaseapp.com",
+            databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "randomidee-e6cdc",
+            storageBucket: "randomidee-e6cdc.appspot.com",
+            messagingSenderId: "920175592676",
+            appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
+        };
 
 // Initialisation Firebase
 firebase.initializeApp(firebaseConfig);

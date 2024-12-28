@@ -107,49 +107,4 @@ nav a i {
     color: inherit;
 }
 
-/* Styles pour le formulaire */
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #228B22; /* Vert sapin */
-}
-
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-    border-color: #228B22; /* Vert sapin */
-    outline: none;
-}
-
-button[type="submit"] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}

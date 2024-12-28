@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vos Idées</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styleprintideas.css"> <!-- Lien vers le CSS -->
+    <link rel="stylesheet" href="styleprintideas.css">
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-
 </head>
 <body>
     <header>
         <h1>Vos Idées</h1>
     </header>
     <nav>
-        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
-        <a href="adideas.html"><i class="fas fa-plus-circle"></i> Ajouter une idée</a>
-        <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
+        <a href="index.html">Accueil</a>
+        <a href="adideas.html">Ajouter une idée</a>
+        <a href="random.html">Tirage au Sort</a>
     </nav>
     <main>
         <h2>Total d'idées : <span id="total-ideas">0</span></h2>
@@ -27,43 +26,43 @@
         <p>&copy; 2024</p>
     </footer>
     <script>
-        // Configuration Firebase
+        // Config Firebase
         const firebaseConfig = {
-            apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
-            authDomain: "randomidee-e6cdc.firebaseapp.com",
-            databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "randomidee-e6cdc",
-            storageBucket: "randomidee-e6cdc.appspot.com",
-            messagingSenderId: "920175592676",
-            appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
+            apiKey: "TA_CLÉ_API",
+            authDomain: "TON_PROJET.firebaseapp.com",
+            databaseURL: "https://TON_PROJET.firebaseio.com",
+            projectId: "TON_PROJET",
+            storageBucket: "TON_PROJET.appspot.com",
+            messagingSenderId: "TON_MESSAGING_ID",
+            appId: "TON_APP_ID"
         };
 
         // Initialiser Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // Référencer le conteneur des idées et du compteur
-        const ideasList = document.getElementById('ideas-list');
+        // Sélectionner les éléments
         const totalIdeas = document.getElementById('total-ideas');
+        const ideasList = document.getElementById('ideas-list');
 
-        // Récupérer les idées depuis Firebase
+        // Charger les idées
         db.ref('ideas/').on('value', (snapshot) => {
             const ideas = snapshot.val();
-            ideasList.innerHTML = ''; // Réinitialiser la liste
+            ideasList.innerHTML = ''; // Vider la liste
             let count = 0;
 
-            // Parcourir les idées et les afficher
-            for (const key in ideas) {
-                const idea = ideas[key];
-                const listItem = document.createElement('li');
-                listItem.className = 'idea-item';
-                listItem.textContent = idea.title; // Affiche uniquement le titre
-                ideasList.appendChild(listItem);
-                count++;
+            if (ideas) {
+                for (const key in ideas) {
+                    const idea = ideas[key];
+                    const listItem = document.createElement('li');
+                    listItem.textContent = idea.title; // Affiche le titre
+                    ideasList.appendChild(listItem);
+                    count++;
+                }
             }
-
-            // Mettre à jour le compteur
-            totalIdeas.textContent = count;
+            totalIdeas.textContent = count; // Mettre à jour le compteur
+        }, (error) => {
+            console.error("Erreur lors de la récupération des données :", error);
         });
     </script>
 </body>

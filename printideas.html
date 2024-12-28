@@ -64,6 +64,13 @@
         }, (error) => {
             console.error("Erreur lors de la récupération des données :", error);
         });
+        if (navigator.onLine) {
+        console.log("Connexion internet : OK");
+    } else {
+        console.log("Pas de connexion internet !");
+    }
     </script>
+    
+
 </body>
 </html>

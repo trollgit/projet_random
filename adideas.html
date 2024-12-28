@@ -7,13 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleadideas.css"> <!-- Lien vers le CSS -->
 </head>
-    
 <body id="adideas-page">
     <!-- Contenu de la page -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-    <script src="app.js"></script>
-
     <header>
         <h1>Ajouter une Idée</h1>
     </header>
@@ -50,13 +45,11 @@
         <p>&copy; 2024</p>
     </footer>
 
-    <!-- Firebase SDK -->
+    <!-- Firebase SDK avec type="module" -->
     <script type="module">
-        // Import Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
         import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
-        // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
             authDomain: "randomidee-e6cdc.firebaseapp.com",
@@ -67,30 +60,24 @@
             appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
         };
 
-        // Initialiser Firebase
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Gérer la soumission du formulaire
         document.getElementById('add-idea-form').addEventListener('submit', function (e) {
-            e.preventDefault(); // Empêche le rechargement de la page
-            
+            e.preventDefault();
+
             const title = document.getElementById('idea-title').value;
             const description = document.getElementById('idea-description').value;
 
-            // Ajouter l'idée dans Firebase
             push(ref(db, 'ideas/'), {
                 title: title,
                 description: description
             }).then(() => {
-                // Afficher un message de confirmation
                 const confirmationMessage = document.getElementById('confirmation-message');
                 confirmationMessage.style.display = 'block';
 
-                // Réinitialiser le formulaire
                 e.target.reset();
 
-                // Cacher le message après 3 secondes
                 setTimeout(() => {
                     confirmationMessage.style.display = 'none';
                 }, 3000);

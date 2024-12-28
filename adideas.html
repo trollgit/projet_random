@@ -6,18 +6,15 @@
     <title>Ajouter une Idée</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleadideas.css"> <!-- Lien vers le CSS -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-
 </head>
 <body>
     <header>
         <h1>Ajouter une Idée</h1>
     </header>
     <nav>
-        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
-        <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
-        <a href="ideas.html"><i class="fas fa-list"></i> Vos Idées</a>
+        <a href="index.html">Accueil</a>
+        <a href="random.html">Tirage au Sort</a>
+        <a href="ideas.html">Vos Idées</a>
     </nav>
     <main>
         <h2>Partagez vos idées de rendez-vous</h2>
@@ -34,81 +31,34 @@
                 <textarea id="idea-description" name="idea-description" placeholder="Décrivez votre idée..." rows="5" required></textarea>
             </div>
             <div class="form-group">
-                <button type="submit" class="cta-button"><i class="fas fa-paper-plane"></i> Soumettre l'idée</button>
+                <button type="submit" class="cta-button">Soumettre l'idée</button>
             </div>
         </form>
     </main>
     <footer>
-        <p>&copy; 2024</p> <!-- Sans la mention "Créé avec ❤️" -->
+        <p>&copy; 2024</p>
     </footer>
-    <script>
-    const firebaseConfig = {
-        apiKey: "TA_CLÉ_API",
-        authDomain: "TON_PROJET.firebaseapp.com",
-        databaseURL: "https://TON_PROJET.firebaseio.com",
-        projectId: "TON_PROJET",
-        storageBucket: "TON_PROJET.appspot.com",
-        messagingSenderId: "TON_MESSAGING_ID",
-        appId: "TON_APP_ID"
-    };
 
-    // Initialiser Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    // Gérer la soumission du formulaire
-    document.getElementById('add-idea-form').addEventListener('submit', function(e) {
-        e.preventDefault(); // Empêche le rechargement de la page
-        
-        const title = document.getElementById('idea-title').value;
-        const description = document.getElementById('idea-description').value;
-
-        // Sauvegarder dans Firebase
-        db.ref('ideas/').push({
-            title: title,
-            description: description
-        });
-
-        alert('Votre idée a été ajoutée avec succès !');
-        e.target.reset();
-    });
-</script>
-
-
-    <script>
-        // Gérer la soumission du formulaire
-        document.getElementById('add-idea-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Empêche le rechargement de la page
-            const title = document.getElementById('idea-title').value;
-            const description = document.getElementById('idea-description').value;
-
-            // Simule l'ajout d'idée (à remplacer par une logique serveur ou stockage)
-            alert(`Votre idée a été ajoutée :\n\nTitre : ${title}\nDescription : ${description}`);
-            
-            // Réinitialise le formulaire
-            e.target.reset();
-        });
-    </script>
+    <!-- Firebase SDK -->
     <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+        // Import Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
-    authDomain: "randomidee-e6cdc.firebaseapp.com",
-    databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "randomidee-e6cdc",
-    storageBucket: "randomidee-e6cdc.firebasestorage.app",
-    messagingSenderId: "920175592676",
-    appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
-  };
+        // Configuration Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
+            authDomain: "randomidee-e6cdc.firebaseapp.com",
+            databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "randomidee-e6cdc",
+            storageBucket: "randomidee-e6cdc.appspot.com",
+            messagingSenderId: "920175592676",
+            appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
+        };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
-</body>
-</html>
+        // Initialiser Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
+        // Gérer la soumission du formulaire
+   

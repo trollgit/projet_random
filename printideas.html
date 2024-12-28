@@ -6,33 +6,12 @@
     <title>Vos Idées</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleprintideas.css">
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-</head>
-<body id="printideas-page">
-    <!-- Contenu de la page -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-    <script src="app.js"></script>
-
-
-    <header>
-        <h1>Vos Idées</h1>
-    </header>
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="adideas.html">Ajouter une idée</a>
-        <a href="random.html">Tirage au Sort</a>
-    </nav>
-    <main>
-        <h2>Total d'idées : <span id="total-ideas">0</span></h2>
-        <ul id="ideas-list"></ul>
-    </main>
-    <footer>
-        <p>&copy; 2024</p>
-    </footer>
-    <script>
-    // Configuration Firebase
+    <script type="module">
+        // Importation des modules Firebase v9
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+        
+        // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
             authDomain: "randomidee-e6cdc.firebaseapp.com",
@@ -44,15 +23,16 @@
         };
 
         // Initialiser Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
         // Sélectionner les éléments
         const totalIdeas = document.getElementById('total-ideas');
         const ideasList = document.getElementById('ideas-list');
 
-        // Charger les idées
-        db.ref('ideas/').on('value', (snapshot) => {
+        // Charger les idées depuis Firebase
+        const ideasRef = ref(db, 'ideas/');
+        onValue(ideasRef, (snapshot) => {
             const ideas = snapshot.val();
             ideasList.innerHTML = ''; // Vider la liste
             let count = 0;
@@ -70,13 +50,24 @@
         }, (error) => {
             console.error("Erreur lors de la récupération des données :", error);
         });
-        if (navigator.onLine) {
-        console.log("Connexion internet : OK");
-    } else {
-        console.log("Pas de connexion internet !");
-    }
     </script>
-    
-
+</head>
+<body id="printideas-page">
+    <!-- Contenu de la page -->
+    <header>
+        <h1>Vos Idées</h1>
+    </header>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="adideas.html">Ajouter une idée</a>
+        <a href="random.html">Tirage au Sort</a>
+    </nav>
+    <main>
+        <h2>Total d'idées : <span id="total-ideas">0</span></h2>
+        <ul id="ideas-list"></ul>
+    </main>
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
 </body>
 </html>

@@ -1,3 +1,116 @@
+/* Corps de la page */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* En-tête */
+header {
+    background-color: #2E8B57; /* Vert sapin */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 25px; /* Laisser de l'espace pour l'emoji */
+}
+
+nav a::before {
+    content: "🏠"; /* Emoji par défaut (à ajuster pour chaque lien) */
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+nav a:nth-child(1)::before { content: "🏠"; } /* Accueil */
+nav a:nth-child(2)::before { content: "🎲"; } /* Tirage au Sort */
+nav a:nth-child(3)::before { content: "📋"; } /* Vos Idées */
+
+/* Formulaire */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Bouton CTA (Soumettre l'idée) */
+.cta-button {
+    display: inline-block;
+    padding: 15px 20px;
+    background-color: #2E8B57; /* Vert sapin */
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding-left: 40px; /* Laisser de l'espace pour l'emoji */
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #246B47; /* Vert légèrement plus foncé */
+}
+
+.cta-button::before {
+    content: "✉️"; /* Emoji du bouton */
+    position: absolute;
+    left: 10px;
+    font-size: 1.4rem;
+}
+
 /* Message de confirmation */
 .confirmation-message {
     margin-top: 20px;
@@ -19,4 +132,13 @@
     to {
         opacity: 1;
     }
+}
+
+/* Pied de page */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
 }

@@ -87,7 +87,7 @@ textarea {
 .cta-button {
     display: inline-block;
     padding: 15px 20px;
-    background-color: ##228B22; /* Vert sapin */
+    background-color: #4CAF50; /* Vert clair */
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
@@ -97,11 +97,11 @@ textarea {
     cursor: pointer;
     position: relative;
     padding-left: 40px; /* Laisser de l'espace pour l'emoji */
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Transition douce */
 }
 
 .cta-button:hover {
-    background-color: ##228B24; /* Vert légèrement plus foncé */
+    background-color: #2E8B57; /* Vert sapin */
 }
 
 .cta-button::before {
@@ -110,6 +110,7 @@ textarea {
     left: 10px;
     font-size: 1.4rem;
 }
+
 
 /* Message de confirmation */
 .confirmation-message {

@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vos Idées</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleadideas.css"> <!-- Lien vers le CSS -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Vos Idées</h1>
+    </header>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
+        <a href="adideas.html"><i class="fas fa-plus"></i> Ajouter une Idée</a>
+    </nav>
+    <main>
+        <h2>Voici vos idées partagées !</h2>
+        <ul id="ideas-list">
+            <!-- Les idées seront ajoutées ici dynamiquement avec JavaScript -->
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "TON_API_KEY",
+            authDomain: "TON_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://TON_PROJECT_ID.firebaseio.com",
+            projectId: "TON_PROJECT_ID",
+            storageBucket: "TON_PROJECT_ID.appspot.com",
+            messagingSenderId: "TON_MESSAGING_SENDER_ID",
+            appId: "TON_APP_ID"
+        };
+
+        // Initialisation de Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // Récupérer et afficher les idées depuis Firebase
+        db.ref('ideas/').on('value', function(snapshot) {
+            const ideasList = document.getElementById('ideas-list');
+            ideasList.innerHTML = ''; // Effacer la liste existante
+
+            snapshot.forEach(function(childSnapshot) {
+                const idea = childSnapshot.val();
+                const ideaElement = document.createElement('li');
+                ideaElement.classList.add('idea-item');
+                ideaElement.innerHTML = `
+                    <strong>${idea.title}</strong><br>
+                    <p>${idea.description}</p>
+                `;
+                ideasList.appendChild(ideaElement);
+            });
+        });
+    </script>
+</body>
+</html>
 

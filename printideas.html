@@ -15,51 +15,55 @@
     </header>
     <nav>
         <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        <a href="adideas.html"><i class="fas fa-plus-circle"></i> Ajouter une idée</a>
         <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
-        <a href="adideas.html"><i class="fas fa-plus"></i> Ajouter une Idée</a>
     </nav>
     <main>
-        <h2>Voici vos idées partagées !</h2>
-        <ul id="ideas-list">
-            <!-- Les idées seront ajoutées ici dynamiquement avec JavaScript -->
-        </ul>
+        <h2>Total d'idées : <span id="total-ideas">0</span></h2>
+        <ul id="ideas-list"></ul>
     </main>
     <footer>
         <p>&copy; 2024</p>
     </footer>
-
     <script>
+        // Configuration Firebase
         const firebaseConfig = {
-            apiKey: "TON_API_KEY",
-            authDomain: "TON_PROJECT_ID.firebaseapp.com",
-            databaseURL: "https://TON_PROJECT_ID.firebaseio.com",
-            projectId: "TON_PROJECT_ID",
-            storageBucket: "TON_PROJECT_ID.appspot.com",
-            messagingSenderId: "TON_MESSAGING_SENDER_ID",
-            appId: "TON_APP_ID"
+            apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
+            authDomain: "randomidee-e6cdc.firebaseapp.com",
+            databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "randomidee-e6cdc",
+            storageBucket: "randomidee-e6cdc.appspot.com",
+            messagingSenderId: "920175592676",
+            appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
         };
 
-        // Initialisation de Firebase
+        // Initialiser Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // Récupérer et afficher les idées depuis Firebase
-        db.ref('ideas/').on('value', function(snapshot) {
-            const ideasList = document.getElementById('ideas-list');
-            ideasList.innerHTML = ''; // Effacer la liste existante
+        // Référencer le conteneur des idées et du compteur
+        const ideasList = document.getElementById('ideas-list');
+        const totalIdeas = document.getElementById('total-ideas');
 
-            snapshot.forEach(function(childSnapshot) {
-                const idea = childSnapshot.val();
-                const ideaElement = document.createElement('li');
-                ideaElement.classList.add('idea-item');
-                ideaElement.innerHTML = `
-                    <strong>${idea.title}</strong><br>
-                    <p>${idea.description}</p>
-                `;
-                ideasList.appendChild(ideaElement);
-            });
+        // Récupérer les idées depuis Firebase
+        db.ref('ideas/').on('value', (snapshot) => {
+            const ideas = snapshot.val();
+            ideasList.innerHTML = ''; // Réinitialiser la liste
+            let count = 0;
+
+            // Parcourir les idées et les afficher
+            for (const key in ideas) {
+                const idea = ideas[key];
+                const listItem = document.createElement('li');
+                listItem.className = 'idea-item';
+                listItem.textContent = idea.title; // Affiche uniquement le titre
+                ideasList.appendChild(listItem);
+                count++;
+            }
+
+            // Mettre à jour le compteur
+            totalIdeas.textContent = count;
         });
     </script>
 </body>
 </html>
-

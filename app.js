@@ -56,3 +56,6 @@ function deleteIdea(ideaId) {
         console.error("Erreur lors de la suppression de l'idée :", error);
     });
 }
+
+// Attacher la fonction deleteIdea à l'objet global `window`
+window.deleteIdea = deleteIdea;

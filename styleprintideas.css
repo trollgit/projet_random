@@ -1,0 +1,83 @@
+/* Général */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #2E8B57; /* Vert sapin */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #2E8B57; /* Vert sapin */
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Liste des idées */
+#ideas-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.idea-item {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.idea-item strong {
+    font-size: 1.2rem;
+    color: #2E8B57; /* Vert sapin */
+}
+
+.idea-item p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Pied de page */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}

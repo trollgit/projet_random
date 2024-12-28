@@ -34,6 +34,11 @@
                 <button type="submit" class="cta-button">Soumettre l'idée</button>
             </div>
         </form>
+
+        <!-- Message de confirmation -->
+        <div id="confirmation-message" style="display: none;" class="confirmation-message">
+            <p>Votre idée a été ajoutée avec succès ! 🎉</p>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024</p>
@@ -61,4 +66,32 @@
         const db = getDatabase(app);
 
         // Gérer la soumission du formulaire
-   
+        document.getElementById('add-idea-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Empêche le rechargement de la page
+            
+            const title = document.getElementById('idea-title').value;
+            const description = document.getElementById('idea-description').value;
+
+            // Ajouter l'idée dans Firebase
+            push(ref(db, 'ideas/'), {
+                title: title,
+                description: description
+            }).then(() => {
+                // Afficher un message de confirmation
+                const confirmationMessage = document.getElementById('confirmation-message');
+                confirmationMessage.style.display = 'block';
+
+                // Réinitialiser le formulaire
+                e.target.reset();
+
+                // Cacher le message après 3 secondes
+                setTimeout(() => {
+                    confirmationMessage.style.display = 'none';
+                }, 3000);
+            }).catch((error) => {
+                alert('Erreur lors de l’ajout de l’idée : ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>

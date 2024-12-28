@@ -13,28 +13,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// Ajouter une idée (pour `adideas.html`)
-function addIdea(title, description) {
-    db.ref('ideas/').push({
-        title: title,
-        description: description
-    });
-}
-
-// Supprimer une idée
-function deleteIdea(ideaId) {
-    db.ref('ideas/' + ideaId).remove()
-        .then(() => {
-            console.log('Idée supprimée avec succès');
-        })
-        .catch((error) => {
-            console.error('Erreur lors de la suppression de l\'idée:', error);
-        });
-}
-
 // Afficher les idées (pour `printideas.html`)
 function displayIdeas() {
-    const ideaList = document.getElementById('idea-list');
+    const ideaList = document.getElementById('ideas-list');
     const totalIdeas = document.getElementById('total-ideas');
     db.ref('ideas/').on('value', (snapshot) => {
         ideaList.innerHTML = ''; // Réinitialise la liste des idées
@@ -59,29 +40,22 @@ function displayIdeas() {
     });
 }
 
-// Gestion des formulaires
-function handleFormSubmission(formId, callback) {
-    const form = document.getElementById(formId);
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        callback(data);
-        form.reset();
-    });
+// Supprimer une idée
+function deleteIdea(ideaId) {
+    db.ref('ideas/' + ideaId).remove()
+        .then(() => {
+            console.log('Idée supprimée avec succès');
+        })
+        .catch((error) => {
+            console.error('Erreur lors de la suppression de l\'idée:', error);
+        });
 }
 
 // Initialisation pour chaque page
 document.addEventListener('DOMContentLoaded', () => {
     const currentPage = document.body.id; // ID de la page (défini dans chaque HTML)
 
-    if (currentPage === 'adideas-page') {
-        // Page "Ajouter une idée"
-        handleFormSubmission('add-idea-form', (data) => {
-            addIdea(data['idea-title'], data['idea-description']);
-            alert('Votre idée a été ajoutée avec succès !');
-        });
-    } else if (currentPage === 'printideas-page') {
+    if (currentPage === 'printideas-page') {
         // Page "Afficher les idées"
         displayIdeas();
     }

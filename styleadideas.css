@@ -101,7 +101,7 @@ textarea {
 }
 
 .cta-button:hover {
-    background-color: #246B47; /* Vert légèrement plus foncé */
+    background-color: ##228B24; /* Vert légèrement plus foncé */
 }
 
 .cta-button::before {

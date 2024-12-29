@@ -13,10 +13,11 @@ header {
     padding: 20px 0;
     text-align: center;
     color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 3rem; /* Augmentation de la taille pour plus de visibilité */
     margin: 0;
     font-weight: 600;
 }
@@ -27,17 +28,23 @@ nav {
     color: white;
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    padding: 12px 0; /* Augmentation de la hauteur de la barre */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile pour la barre */
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 20px; /* Espacement plus large */
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Augmentation de la taille de la police */
     display: flex;
     align-items: center;
+    transition: color 0.3s ease; /* Transition douce pour le hover */
+}
+
+nav a:hover {
+    color: #228B22; /* Changement de couleur lors du survol */
 }
 
 nav a i {
@@ -48,15 +55,18 @@ nav a i {
 main {
     padding: 40px 20px;
     text-align: center;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
 }
 
 main h2 {
-    font-size: 2rem;
+    font-size: 2.5rem; /* Augmentation de la taille du titre */
     color: #228B22; /* Vert sapin */
+    margin-bottom: 20px;
 }
 
 main p {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Augmentation de la taille du texte */
     margin: 10px 0;
     color: #555;
 }
@@ -66,13 +76,13 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 12px 0; /* Hauteur augmentée */
     margin-top: 40px;
+    font-size: 1rem;
 }
 
 footer p {
     margin: 0;
-    font-size: 0.9rem;
 }
 
 /* Responsivité */
@@ -82,6 +92,14 @@ footer p {
     }
 
     nav a {
-        margin: 5px 0;
+        margin: 8px 0;
+    }
+
+    main h2 {
+        font-size: 2rem; /* Taille du titre réduite sur petits écrans */
+    }
+
+    main p {
+        font-size: 1.2rem; /* Taille du texte réduite sur petits écrans */
     }
 }

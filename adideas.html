@@ -10,15 +10,21 @@
      crossorigin="anonymous"></script>
 </head>
 <body id="adideas-page">
-    <!-- Contenu de la page -->
     <header>
         <h1>Ajouter une Idée</h1>
     </header>
     <nav>
-        <a href="index.html">Accueil</a>
-        <a href="random.html">Tirage au Sort</a>
-        <a href="printideas.html">Vos Idées</a>
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        <a href="random.html" class="nav-item">
+            <i class="fas fa-random"></i> Tirage au Sort
+        </a>
+        <a href="printideas.html" class="nav-item">
+            <i class="fas fa-list"></i> Vos Idées
+        </a>
     </nav>
+
     <main>
         <h2>Partagez vos idées de rendez-vous</h2>
         <p>Ajoutez une nouvelle idée pour vos prochaines sorties en amoureux.</p>
@@ -43,11 +49,11 @@
             <p>Votre idée a été ajoutée avec succès ! 🎉</p>
         </div>
     </main>
+
     <footer>
         <p>&copy; 2024</p>
     </footer>
 
-    <!-- Firebase SDK avec type="module" -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
         import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";

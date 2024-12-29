@@ -3,95 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une Idée</title>
+    <title>Tirage au Sort - Idée</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styleadideas.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6113467286302422"
-        crossorigin="anonymous"></script>
-</head>
-<body id="adideas-page">
-    <!-- En-tête -->
-    <header>
-        <h1>Ajouter une Idée</h1>
-    </header>
-
-    <!-- Barre de navigation -->
-    <nav>
-        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
-        <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
-        <a href="printideas.html"><i class="fas fa-list"></i> Vos Idées</a>
-    </nav>
-
-    <!-- Contenu principal -->
-    <main>
-        <h2>Partagez vos idées de rendez-vous</h2>
-        <p>Ajoutez une nouvelle idée pour vos prochaines sorties en amoureux.</p>
-
-        <!-- Formulaire -->
-        <form id="add-idea-form">
-            <div class="form-group">
-                <label for="idea-title">Titre de l'idée :</label>
-                <input type="text" id="idea-title" name="idea-title" placeholder="Exemple : Dîner romantique" required>
-            </div>
-            <div class="form-group">
-                <label for="idea-description">Description :</label>
-                <textarea id="idea-description" name="idea-description" placeholder="Décrivez votre idée..." rows="5" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="cta-button">Soumettre l'idée</button>
-            </div>
-        </form>
-
-        <!-- Message de confirmation -->
-        <div id="confirmation-message" style="display: none;" class="confirmation-message">
-            <p>Votre idée a été ajoutée avec succès ! 🎉</p>
-        </div>
-    </main>
-
-    <!-- Pied de page -->
-    <footer>
-        <p>&copy; 2024</p>
-    </footer>
-
+    <link rel="stylesheet" href="stylerandom.css">
+    <!-- Importation des modules Firebase v9 -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
-            authDomain: "randomidee-e6cdc.firebaseapp.com",
-            databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "randomidee-e6cdc",
-            storageBucket: "randomidee-e6cdc.appspot.com",
-            messagingSenderId: "920175592676",
-            appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configuration Firebase
+            const firebaseConfig = {
+                apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
+                authDomain: "randomidee-e6cdc.firebaseapp.com",
+                databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "randomidee-e6cdc",
+                storageBucket: "randomidee-e6cdc.appspot.com",
+                messagingSenderId: "920175592676",
+                appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
+            };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+            // Initialisation Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
 
-        document.getElementById('add-idea-form').addEventListener('submit', function (e) {
-            e.preventDefault();
+            // Sélectionner les éléments
+            const totalIdeas = document.getElementById('total-ideas');
+            const randomButton = document.getElementById('draw-button');
+            const randomIdeaContainer = document.getElementById('random-idea');
 
-            const title = document.getElementById('idea-title').value;
-            const description = document.getElementById('idea-description').value;
+            // Charger les idées depuis Firebase
+            const ideasRef = ref(db, 'ideas/');
+            let ideasArray = [];
 
-            push(ref(db, 'ideas/'), {
-                title: title,
-                description: description
-            }).then(() => {
-                const confirmationMessage = document.getElementById('confirmation-message');
-                confirmationMessage.style.display = 'block';
+            onValue(ideasRef, (snapshot) => {
+                const ideas = snapshot.val();
+                ideasArray = [];
+                if (ideas) {
+                    for (const key in ideas) {
+                        const idea = ideas[key];
+                        ideasArray.push({ id: key, ...idea });
+                    }
+                }
+                totalIdeas.textContent = ideasArray.length; // Mettre à jour le compteur
+            }, (error) => {
+                console.error("Erreur lors de la récupération des données :", error);
+            });
 
-                e.target.reset();
-
-                setTimeout(() => {
-                    confirmationMessage.style.display = 'none';
-                }, 3000);
-            }).catch((error) => {
-                alert('Erreur lors de l’ajout de l’idée : ' + error.message);
+            // Fonction pour tirer une idée au hasard
+            randomButton.addEventListener('click', () => {
+                if (ideasArray.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * ideasArray.length);
+                    const randomIdea = ideasArray[randomIndex];
+                    randomIdeaContainer.innerHTML = `
+                        <strong>${randomIdea.title}</strong>
+                        <p>${randomIdea.description}</p>
+                    `;
+                } else {
+                    randomIdeaContainer.innerHTML = `<p>Aucune idée disponible.</p>`;
+                }
             });
         });
     </script>
+</head>
+<body id="random-page">
+    <!-- Contenu de la page -->
+    <header>
+        <h1>Tirage au Sort - Idée</h1>
+    </header>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="adideas.html">Ajouter une idée</a>
+        <a href="printideas.html">Afficher les idées</a>
+    </nav>
+    <main>
+        <h2>Idées disponibles : <span id="total-ideas">0</span></h2>
+        <button id="draw-button">Tirer une idée au sort</button>
+        <div id="random-idea">
+            <p>Appuyez sur le bouton pour tirer une idée au sort.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
 </body>
 </html>

@@ -21,41 +21,44 @@ header h1 {
     font-weight: 600;
 }
 
+/* Barre de navigation */
+nav {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+nav a i {
+    margin-right: 8px;
+}
+
 /* Contenu principal */
 main {
     padding: 40px 20px;
     text-align: center;
 }
 
-main h1 {
+main h2 {
     font-size: 2rem;
     color: #228B22; /* Vert sapin */
-    margin-bottom: 20px;
 }
 
 main p {
     font-size: 1.2rem;
     margin: 10px 0;
     color: #555;
-}
-
-/* Liens principaux */
-main a {
-    display: inline-block;
-    margin: 15px 10px;
-    padding: 12px 25px;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    background-color: #228B22; /* Vert sapin */
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-main a:hover {
-    background-color: #1c741b; /* Légèrement plus foncé */
-    transform: translateY(-3px);
 }
 
 /* Pied de page */
@@ -74,16 +77,11 @@ footer p {
 
 /* Responsivité */
 @media (max-width: 768px) {
-    main {
-        padding: 20px;
+    nav {
+        flex-direction: column;
     }
 
-    header h1 {
-        font-size: 2rem;
-    }
-
-    main a {
-        font-size: 0.9rem;
-        padding: 10px 20px;
+    nav a {
+        margin: 5px 0;
     }
 }

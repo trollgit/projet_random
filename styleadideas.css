@@ -37,18 +37,16 @@ nav a {
     font-size: 1.1rem;
     position: relative;
     padding-left: 25px; /* Laisser de l'espace pour l'emoji */
+    transition: color 0.3s ease;
 }
 
-nav a::before {
-    content: "🏠"; /* Emoji par défaut (à ajuster pour chaque lien) */
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
+nav a:hover {
+    color: #228B22;
 }
 
-nav a:nth-child(1)::before { content: "🏠"; } /* Accueil */
-nav a:nth-child(2)::before { content: "🎲"; } /* Tirage au Sort */
-nav a:nth-child(3)::before { content: "📋"; } /* Vos Idées */
+nav a i {
+    margin-right: 8px;
+}
 
 /* Formulaire */
 form {
@@ -58,6 +56,11 @@ form {
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+form:hover {
+    transform: translateY(-10px);
 }
 
 .form-group {
@@ -97,7 +100,7 @@ textarea {
     cursor: pointer;
     position: relative;
     padding-left: 40px; /* Laisser de l'espace pour l'emoji */
-    transition: background-color 0.3s ease; /* Transition douce */
+    transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {

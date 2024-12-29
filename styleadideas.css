@@ -20,28 +20,23 @@ header h1 {
     font-size: 2.5rem;
 }
 
-/* Navigation */
+/* Barre de navigation */
 nav {
+    background-color: #333; /* Noir */
+    color: white;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 nav a {
+    color: white;
     text-decoration: none;
-    color: #333;
+    margin: 0 15px;
     font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    padding-left: 25px; /* Laisser de l'espace pour l'emoji */
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #228B22;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 nav a i {
@@ -56,11 +51,6 @@ form {
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-form:hover {
-    transform: translateY(-10px);
 }
 
 .form-group {
@@ -100,7 +90,7 @@ textarea {
     cursor: pointer;
     position: relative;
     padding-left: 40px; /* Laisser de l'espace pour l'emoji */
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Transition douce */
 }
 
 .cta-button:hover {
@@ -113,7 +103,6 @@ textarea {
     left: 10px;
     font-size: 1.4rem;
 }
-
 
 /* Message de confirmation */
 .confirmation-message {

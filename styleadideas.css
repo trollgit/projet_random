@@ -1,4 +1,4 @@
-/* Corps de la page */
+/* Style général */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -9,137 +9,86 @@ body {
 
 /* En-tête */
 header {
-    background-color: #228B22; /* Vert sapin */
-    color: white;
-    padding: 20px;
+    background: linear-gradient(135deg, #228B22, #4CAF50); /* Dégradé de vert */
+    padding: 20px 0;
     text-align: center;
+    color: white;
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.5rem;
+    margin: 0;
+    font-weight: 600;
 }
 
-/* Navigation */
+/* Barre de navigation */
 nav {
+    background-color: #333;
+    color: white;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    padding-left: 25px; /* Laisser de l'espace pour l'emoji */
-}
-
-nav a::before {
-    content: "🏠"; /* Emoji par défaut (à ajuster pour chaque lien) */
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
-}
-
-nav a:nth-child(1)::before { content: "🏠"; } /* Accueil */
-nav a:nth-child(2)::before { content: "🎲"; } /* Tirage au Sort */
-nav a:nth-child(3)::before { content: "📋"; } /* Vos Idées */
-
-/* Formulaire */
-form {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-textarea {
-    resize: none;
-}
-
-/* Bouton CTA (Soumettre l'idée) */
-.cta-button {
-    display: inline-block;
-    padding: 15px 20px;
-    background-color: #4CAF50; /* Vert clair */
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    margin: 0 15px;
     font-weight: 600;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    padding-left: 40px; /* Laisser de l'espace pour l'emoji */
-    transition: background-color 0.3s ease; /* Transition douce */
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
 }
 
-.cta-button:hover {
-    background-color: #2E8B57; /* Vert sapin */
+nav a i {
+    margin-right: 8px;
 }
 
-.cta-button::before {
-    content: "✉️"; /* Emoji du bouton */
-    position: absolute;
-    left: 10px;
-    font-size: 1.4rem;
+nav a:hover {
+    color: #228B22;
+    text-decoration: underline;
+    transition: color 0.3s ease;
 }
 
-
-/* Message de confirmation */
-.confirmation-message {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #4CAF50; /* Vert foncé */
-    background-color: #dff0d8; /* Vert clair */
-    color: #3c763d; /* Texte vert foncé */
-    border-radius: 5px;
-    font-size: 1.1rem;
+/* Contenu principal */
+main {
+    padding: 40px 20px;
     text-align: center;
-    animation: fadeIn 0.5s ease;
 }
 
-/* Animation d'apparition */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+main h2 {
+    font-size: 2.5rem;
+    color: #228B22; /* Vert sapin */
+    font-weight: 700;
+}
+
+main p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #555;
 }
 
 /* Pied de page */
 footer {
     background-color: #333;
     color: white;
-    padding: 20px;
     text-align: center;
-    margin-top: 20px;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        margin: 5px 0;
+    }
 }

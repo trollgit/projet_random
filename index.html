@@ -6,13 +6,14 @@
     <title>Accueil</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Assurez-vous que FontAwesome est bien chargé -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>Random Idée</h1>
     </header>
     <nav>
-        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
         <a href="adideas.html"><i class="fas fa-plus"></i> Ajouter une Idée</a>
         <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
         <a href="printideas.html"><i class="fas fa-list"></i> Voir les Idées</a>
@@ -20,6 +21,22 @@
     <main>
         <h2>Bienvenue sur Random Idée</h2>
         <p>Un endroit pour inspirer vos sorties ou moments spéciaux.</p>
+
+        <!-- Section avec les boutons -->
+        <div class="button-container">
+            <a href="adideas.html" class="button">
+                <i class="fas fa-plus"></i>
+                <span>Ajouter une Idée</span>
+            </a>
+            <a href="random.html" class="button">
+                <i class="fas fa-random"></i>
+                <span>Tirer au Sort</span>
+            </a>
+            <a href="printideas.html" class="button">
+                <i class="fas fa-list"></i>
+                <span>Voir les Idées</span>
+            </a>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 | Tous droits réservés</p>

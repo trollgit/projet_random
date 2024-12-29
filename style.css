@@ -1,157 +1,89 @@
-/* Typographie et styles de base */
+/* Style général */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f8f5; /* Vert très clair */
+    background-color: #f9f9f9;
     color: #333;
 }
 
 /* En-tête */
 header {
     background-color: #228B22; /* Vert sapin */
-    color: white;
-    padding: 20px;
+    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre */
+    color: white;
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.5rem;
-}
-
-/* Navigation */
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
+    margin: 0;
     font-weight: 600;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.3s ease;
 }
 
-nav a:hover {
-    color: #228B22; /* Vert sapin */
-}
-
-/* Section principale */
+/* Contenu principal */
 main {
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 
-main h2 {
+main h1 {
     font-size: 2rem;
-    margin-bottom: 20px;
     color: #228B22; /* Vert sapin */
+    margin-bottom: 20px;
 }
 
 main p {
     font-size: 1.2rem;
-    line-height: 1.6;
+    margin: 10px 0;
     color: #555;
 }
 
-/* Boutons CTA */
-.cta-button {
+/* Liens principaux */
+main a {
     display: inline-block;
-    padding: 15px 30px;
-    background-color: #228B22; /* Vert sapin */
-    color: white;
+    margin: 15px 10px;
+    padding: 12px 25px;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
+    color: white;
+    background-color: #228B22; /* Vert sapin */
     border-radius: 8px;
-    margin: 10px;
-    transition: background-color 0.3s, transform 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.cta-button:hover {
-    background-color: #1e7b1e; /* Légèrement plus foncé pour l'effet hover */
-    transform: scale(1.05); /* Agrandit légèrement au survol */
+main a:hover {
+    background-color: #1c741b; /* Légèrement plus foncé */
+    transform: translateY(-3px);
 }
 
 /* Pied de page */
 footer {
     background-color: #333;
     color: white;
-    padding: 20px;
     text-align: center;
-    margin-top: 20px;
+    padding: 10px 0;
+    margin-top: 40px;
 }
 
 footer p {
     margin: 0;
+    font-size: 0.9rem;
 }
 
-/* Icônes spécifiques */
-.cta-button i,
-nav a i {
-    font-size: 1.2rem;
-    color: inherit;
+/* Responsivité */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main a {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
 }
-/* Styles pour le formulaire */
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #228B22; /* Vert sapin */
-}
-
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-    border-color: #228B22; /* Vert sapin */
-    outline: none;
-}
-
-button[type="submit"] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-
-

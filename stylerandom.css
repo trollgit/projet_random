@@ -1,108 +1,85 @@
-/* Typographie et styles de base */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f8f5; /* Vert très clair */
-    color: #333;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirage au Sort - Idée</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylerandom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM9rWp6am+V2Cz0EMl4X9jXKdln7C8Jw4ndhA2z" crossorigin="anonymous">
+    <!-- Importation des modules Firebase v9 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 
-/* En-tête */
-header {
-    background-color: #228B22; /* Vert sapin */
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+        document.addEventListener('DOMContentLoaded', () => {
+            const firebaseConfig = {
+                apiKey: "AIzaSyCxupN3mXqxaNjc1LAvDbwZ7Z3gML7vPYE",
+                authDomain: "randomidee-e6cdc.firebaseapp.com",
+                databaseURL: "https://randomidee-e6cdc-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "randomidee-e6cdc",
+                storageBucket: "randomidee-e6cdc.appspot.com",
+                messagingSenderId: "920175592676",
+                appId: "1:920175592676:web:f24b964cbf8ec624fa58f1"
+            };
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
 
-/* Navigation */
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    background-color: #333;
-    padding: 10px 0;
-}
+            const totalIdeas = document.getElementById('total-ideas');
+            const randomButton = document.getElementById('draw-button');
+            const randomIdeaContainer = document.getElementById('random-idea');
 
-nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+            const ideasRef = ref(db, 'ideas/');
+            let ideasArray = [];
 
-nav a:hover {
-    color: #228B22;
-}
+            onValue(ideasRef, (snapshot) => {
+                const ideas = snapshot.val();
+                ideasArray = [];
+                if (ideas) {
+                    for (const key in ideas) {
+                        const idea = ideas[key];
+                        ideasArray.push({ id: key, ...idea });
+                    }
+                }
+                totalIdeas.textContent = ideasArray.length;
+            }, (error) => {
+                console.error("Erreur lors de la récupération des données :", error);
+            });
 
-/* Section principale */
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-main h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #228B22;
-}
-
-#random-idea {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    color: #333;
-}
-
-#random-idea p {
-    font-size: 1.2rem;
-}
-
-#random-idea strong {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #228B22;
-}
-
-/* Bouton de tirage */
-#draw-button {
-    padding: 15px 30px;
-    background-color: #228B22;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    margin-top: 20px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-#draw-button:hover {
-    background-color: #1e7b1e;
-    transform: scale(1.05);
-}
-
-/* Pied de page */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-footer p {
-    margin: 0;
-}
+            randomButton.addEventListener('click', () => {
+                if (ideasArray.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * ideasArray.length);
+                    const randomIdea = ideasArray[randomIndex];
+                    randomIdeaContainer.innerHTML = `
+                        <strong>${randomIdea.title}</strong>
+                        <p>${randomIdea.description}</p>
+                    `;
+                } else {
+                    randomIdeaContainer.innerHTML = `<p>Aucune idée disponible.</p>`;
+                }
+            });
+        });
+    </script>
+</head>
+<body id="random-page">
+    <header>
+        <h1>Tirage au Sort - Idée</h1>
+    </header>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        <a href="adideas.html"><i class="fas fa-plus-circle"></i> Ajouter une idée</a>
+        <a href="printideas.html"><i class="fas fa-list-alt"></i> Afficher les idées</a>
+    </nav>
+    <main>
+        <h2>Idées disponibles : <span id="total-ideas">0</span></h2>
+        <button id="draw-button"><i class="fas fa-random"></i> Tirer une idée au sort</button>
+        <div id="random-idea">
+            <p>Appuyez sur le bouton pour tirer une idée au sort.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+</body>
+</html>

@@ -6,27 +6,35 @@
     <title>Vos Idées</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleprintideas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6113467286302422"
      crossorigin="anonymous"></script>
 </head>
 <body id="printideas-page">
-    <!-- Contenu de la page -->
+    <!-- En-tête -->
     <header>
         <h1>Vos Idées</h1>
     </header>
+
+    <!-- Barre de navigation -->
     <nav>
-        <a href="index.html">Accueil</a>
-        <a href="adideas.html">Ajouter une idée</a>
-        <a href="random.html">Tirage au Sort</a>
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        <a href="adideas.html"><i class="fas fa-plus"></i> Ajouter une idée</a>
+        <a href="random.html"><i class="fas fa-random"></i> Tirage au Sort</a>
     </nav>
+
+    <!-- Contenu principal -->
     <main>
         <h2>Total d'idées : <span id="total-ideas">0</span></h2>
         <ul id="ideas-list"></ul>
     </main>
+
+    <!-- Pied de page -->
     <footer>
         <p>&copy; 2024</p>
     </footer>
-    <!-- Lien vers le fichier app.js (JavaScript Firebase) -->
+
+    <!-- Script pour la gestion des idées -->
     <script src="app.js" type="module"></script>
 </body>
 </html>

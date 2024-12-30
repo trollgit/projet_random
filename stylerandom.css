@@ -1,4 +1,4 @@
-/* Typographie et styles de base */
+/* Général */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -7,112 +7,83 @@ body {
     color: #333;
 }
 
-/* En-tête */
 header {
-    background-color: #228B22; /* Vert sapin */
+    background-color: #228B22;
     color: white;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre */
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.5rem;
+    margin: 0;
 }
 
-/* Navigation */
 nav {
     display: flex;
     justify-content: center;
     gap: 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    background-color: #333;
     padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
 nav a {
+    color: white;
     text-decoration: none;
-    color: #333;
     font-weight: 600;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #228B22; /* Vert sapin */
+    color: #228B22;
 }
 
-/* Section principale */
 main {
     padding: 20px;
     text-align: center;
 }
 
 main h2 {
+    color: #228B22;
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #228B22; /* Vert sapin */
 }
 
 #random-idea {
-    background-color: white;
-    border-radius: 8px;
+    background: #fff;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    color: #333;
-}
-
-#random-idea p {
-    font-size: 1.2rem;
-    line-height: 1.6;
 }
 
 #random-idea strong {
-    font-size: 1.5rem;
-    font-weight: 600;
     color: #228B22;
+    font-size: 1.5rem;
 }
 
-/* Bouton de tirage au sort */
+#random-idea p {
+    margin-top: 10px;
+}
+
 #draw-button {
-    padding: 15px 30px;
-    background-color: #228B22; /* Vert sapin */
+    background-color: #228B22;
     color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-top: 20px;
+    padding: 10px 20px;
     border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
 }
 
 #draw-button:hover {
-    background-color: #1e7b1e; /* Légèrement plus foncé pour l'effet hover */
-    transform: scale(1.05); /* Agrandit légèrement au survol */
+    background-color: #1e7b1e;
 }
 
-/* Pied de page */
+/* Footer */
 footer {
     background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;
-    margin-top: 20px;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* Icônes spécifiques */
-#draw-button i {
-    font-size: 1.2rem;
-    color: inherit;
 }

@@ -56,6 +56,33 @@ nav a:hover {
     transform: translateY(-5px); /* Effet de translation pour les liens */
 }
 
+/* Bouton "Tirer une idée au sort" */
+#draw-button {
+    padding: 15px 30px;
+    background-color: #228B22; /* Vert sapin */
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    margin: 20px auto;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    width: fit-content;
+}
+
+#draw-button:hover {
+    background-color: #1e7b1e; /* Changement de couleur au survol */
+    transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+
+#draw-button i {
+    font-size: 1.5rem; /* Taille de l'icône dans le bouton */
+}
+
 /* Contenu principal */
 main {
     padding: 40px 20px;

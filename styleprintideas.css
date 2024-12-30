@@ -24,7 +24,8 @@ header h1 {
 nav {
     display: flex;
     justify-content: center;
-    background-color: #333; /* Noir */
+    gap: 20px;
+    background-color: #333;
     padding: 10px 0;
 }
 
@@ -32,20 +33,25 @@ nav a {
     text-decoration: none;
     color: white;
     font-weight: 600;
-    margin: 0 15px;
     font-size: 1rem;
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
-nav a i {
-    margin-right: 8px;
-}
-
-/* Effet au survol */
 nav a:hover {
     color: #228B22; /* Vert sapin */
 }
+
+/* Icônes des liens */
+nav a::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+nav a:nth-child(1)::before { content: "\f015"; } /* Icône Accueil */
+nav a:nth-child(2)::before { content: "\f067"; } /* Icône Ajouter une idée */
+nav a:nth-child(3)::before { content: "\f0ca"; } /* Icône Tirage au sort */
 
 /* Contenu principal */
 main {
@@ -68,19 +74,24 @@ main {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
+    display: flex; /* Utiliser flexbox pour un alignement propre */
+    flex-direction: column; /* Empiler les éléments verticalement */
+    gap: 10px; /* Espacement entre le texte et le bouton */
     transition: background-color 0.3s ease;
 }
 
-/* Effet au survol */
 .idea-item:hover {
     background-color: #f0f0f0;
 }
 
+/* Titre de l'idée */
 .idea-item strong {
     font-size: 1.2rem;
     color: #228B22; /* Vert sapin */
+    word-wrap: break-word; /* S'assurer que le texte ne dépasse pas */
 }
 
+/* Description de l'idée */
 .idea-item p {
     font-size: 1rem;
     color: #333;
@@ -88,9 +99,7 @@ main {
 
 /* Bouton de suppression */
 .delete-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    align-self: flex-end; /* Placer le bouton à droite */
     background-color: #ff4c4c;
     color: white;
     border: none;
@@ -105,9 +114,28 @@ main {
     background-color: #ff0000;
 }
 
+/* Adaptation pour les petits écrans */
+@media (max-width: 768px) {
+    .idea-item {
+        flex-direction: row; /* Aligner les éléments horizontalement sur mobile */
+        justify-content: space-between; /* Mettre de l'espace entre le texte et le bouton */
+        align-items: center;
+        gap: 0; /* Pas d'espace vertical entre les éléments */
+    }
+
+    .idea-item strong {
+        font-size: 1rem; /* Réduire légèrement la taille du texte */
+        max-width: 75%; /* Limiter la largeur pour éviter de chevaucher le bouton */
+    }
+
+    .delete-button {
+        flex-shrink: 0; /* Empêcher le bouton de rétrécir */
+    }
+}
+
 /* Pied de page */
 footer {
-    background-color: #333; /* Noir */
+    background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;

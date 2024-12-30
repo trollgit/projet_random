@@ -36,12 +36,30 @@ nav a {
     font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px; /* Plus d'espace entre l'icône et le texte */
+}
+
+nav a i {
+    font-size: 1.2rem; /* Taille de l'icône */
 }
 
 nav a:hover {
     color: #228B22;
 }
+
+/* Ajouter un peu de style pour les icônes spécifiques */
+nav a .fa-home {
+    color: #ff6347; /* Exemple de couleur pour l'icône d'accueil */
+}
+
+nav a .fa-plus-circle {
+    color: #ffd700; /* Exemple de couleur pour l'icône ajouter une idée */
+}
+
+nav a .fa-list-alt {
+    color: #4682b4; /* Exemple de couleur pour l'icône afficher les idées */
+}
+
 
 /* Section principale */
 main {

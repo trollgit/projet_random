@@ -32,7 +32,7 @@ nav {
 
 nav a {
     color: white;
-    text-decoration: none;
+    text-decoration: none; /* Supprime le soulignement par défaut */
     margin: 0 15px;
     font-weight: 600;
     font-size: 1rem;
@@ -52,9 +52,10 @@ nav a i {
 nav a:hover {
     color: #228B22; /* Vert sapin au survol */
     background-color: #4CAF50; /* Changer la couleur du fond au survol */
-    text-decoration: underline;
     transform: translateY(-5px); /* Effet de translation pour les liens */
+    text-decoration: none; /* Enlever le soulignement sur le survol */
 }
+
 
 /* Bouton "Tirer une idée au sort" */
 #draw-button {
